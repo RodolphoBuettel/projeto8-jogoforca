@@ -15,6 +15,14 @@ img{
     margin-top: -375px;
 }
 
+.escolha:hover{
+    cursor: pointer;
+}
+
+.letra:hover{
+    cursor: pointer;
+}
+
 .escolha{
     background-color: #27ae60;
     border: none;
@@ -40,6 +48,7 @@ img{
 .verde{
     color:green;
 }
+
 .letra{
     display: flex;
     margin-left: 10px;
@@ -61,7 +70,16 @@ img{
    margin-top: 30px;
 }
 
-.chute:hover{
+.chutar{
+    background-color: #e1ecf4;
+    color: #4377a1;
+    border:solid;
+    border-color:  #4377a1;
+    box-shadow: none;
+    border-width: 0.5px;
+}
+
+.chutar:hover{
     cursor: pointer;
 }
 

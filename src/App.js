@@ -93,6 +93,7 @@ export default function App() {
     const [controlaInput, setcontrolaInput] = React.useState("");
     const [chute, setchute] = React.useState("");
     const [desabilitaChute, setdesabilitaChute] = React.useState(true);
+    const [chutar, setChutar] = React.useState("");
 
     function Chutar() {
         console.log(chute);
@@ -140,6 +141,7 @@ export default function App() {
         const desablita = true;
         setdesabilitaButton(desablita);
         setdesabilitaChute(false);
+        setChutar("chutar");
 
     }
 
@@ -160,7 +162,7 @@ export default function App() {
             <div className="chute">
                 <a className="negrito">Já sei a palavra!</a>
                 <input placeholder="Chute" value={chute} onChange={e => setchute(e.target.value)} />
-                <button className="" disabled={desabilitaChute} onClick={Chutar}>Chutar</button>
+                <button className={chutar} disabled={desabilitaChute} onClick={Chutar}>Chutar</button>
             </div>
             <div className="underline">
                 <h1 className={`linhas ${controlaInput}`}>{linhas}</h1>
