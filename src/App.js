@@ -103,13 +103,14 @@ export default function App() {
             setlinhas(stringSemVirgula);
             setcontrolaInput("verde");
             setdesabilitaChute(true);
-            
+            return setdesabilitaButton(false); 
         }
         else {
             setlinhas(stringSemVirgula);
             setcontrolaInput("vermelho");
             setfase(forca6);
             setdesabilitaChute(true);
+            return setdesabilitaButton(false);
         }
     }
 
