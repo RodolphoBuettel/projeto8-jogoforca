@@ -51,7 +51,7 @@ function Teclado(props) {
             if (props.erro === 6) {
                 props.setfase(forca6);
                 alert("perdeu");
-                props.setvermelho("vermelho");
+                props.setcontrolaInput("vermelho");
                 props.setdesabilitaButton(false);
                 return props.setlinhas([...props.palavra]);
             }
@@ -66,7 +66,7 @@ function Teclado(props) {
             }
             if (j === props.palavra.length) {
                 props.setdesabilitaButton(false);
-                props.setvermelho("verde");
+                props.setcontrolaInput("verde");
                 alert("ganhou");
             }
         }
@@ -90,23 +90,24 @@ export default function App() {
     const [palavraSelecionada, setpalavraSelecionada] = React.useState([]);
     const [erro, seterro] = React.useState(1);
     const [fase, setfase] = React.useState(forca0);
-    const [vermelho, setvermelho] = React.useState("");
-    const [chute, setchute] = React.useState("")
-    const [desabilitaChute, setdesabilitaChute] = React.useState(false);
+    const [controlaInput, setcontrolaInput] = React.useState("");
+    const [chute, setchute] = React.useState("");
+    const [desabilitaChute, setdesabilitaChute] = React.useState(true);
 
     function Chutar() {
+        console.log(chute);
         const palavraString = palavraSelecionada.toString();
         const stringSemVirgula = palavraString.replace(/,/g, "").replace(/\./g, "");
         console.log(stringSemVirgula);
         if (chute === stringSemVirgula) {
             setlinhas(stringSemVirgula);
-            setvermelho("verde");
+            setcontrolaInput("verde");
             setdesabilitaChute(true);
             return setdesabilitaButton(false);
         }
         else {
             setlinhas(stringSemVirgula);
-            setvermelho("vermelho");
+            setcontrolaInput("vermelho");
             setfase(forca6);
             setdesabilitaChute(true);
             return setdesabilitaButton(false);
@@ -138,6 +139,7 @@ export default function App() {
 
         const desablita = true;
         setdesabilitaButton(desablita);
+        setdesabilitaChute(false);
 
     }
 
@@ -153,15 +155,15 @@ export default function App() {
                 {alfabeto.map((l, letra) => <Teclado key={letra} l={l} desabilitaButton={desabilitaButton}
                     linhas={linhas} erro={erro} fase={fase} palavra={palavraSelecionada} seterro={seterro}
                     setfase={setfase} setlinhas={setlinhas} arrayDeLetrasTrocadas={arrayDeLetrasTrocadas}
-                    setvermelho={setvermelho} setdesabilitaButton={setdesabilitaButton} />)}
+                    setcontrolaInput={setcontrolaInput} setdesabilitaButton={setdesabilitaButton} />)}
             </div>
             <div className="chute">
                 <a className="negrito">Já sei a palavra!</a>
-                <input placeholder="Pesquisar" value={chute} onChange={e => setchute(e.target.value)} />
+                <input placeholder="Chute" value={chute} onChange={e => setchute(e.target.value)} />
                 <button className="" disabled={desabilitaChute} onClick={Chutar}>Chutar</button>
             </div>
             <div className="underline">
-                <h1 className={`linhas ${vermelho}`}>{linhas}</h1>
+                <h1 className={`linhas ${controlaInput}`}>{linhas}</h1>
             </div>
         </div>
     )

@@ -61,6 +61,10 @@ img{
    margin-top: 30px;
 }
 
+.chute:hover{
+    cursor: pointer;
+}
+
 .chute > *{
     margin-left: 10px;
 }
