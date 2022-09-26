@@ -73,11 +73,11 @@ function Teclado(props) {
     }
 
     if (props.desabilitaButton === true) {
-        return (<button disabled={habilitaTeclado} className={`letra ${cor}`} onClick=
+        return (<button disabled={habilitaTeclado} data-identifier="letter" className={`letra ${cor}`} onClick=
             {() => EscolherLetra(props.l)}>{props.l.toUpperCase()}</button>);
     }
     else {
-        return (<button disabled className={`letra`}>{props.l.toUpperCase()}</button>);
+        return (<button disabled data-identifier="letter" className={`letra`}>{props.l.toUpperCase()}</button>);
     }
 
 }
@@ -148,10 +148,10 @@ export default function App() {
     return (
         <div className="jogo">
             <div>
-                <img src={fase} />
+                <img src={fase} data-identifier="game-image" />
             </div>
             <div className="escolherPalavra">
-                <button disabled={desabilitaButton} className="escolha" onClick={EscolherPalavra}>Escolher Palavra</button>
+                <button disabled={desabilitaButton} data-identifier="choose-word" className="escolha" onClick={EscolherPalavra}>Escolher Palavra</button>
             </div>
             <div className="teclado">
                 {alfabeto.map((l, letra) => <Teclado key={letra} l={l} desabilitaButton={desabilitaButton}
@@ -161,11 +161,12 @@ export default function App() {
             </div>
             <div className="chute">
                 <a className="negrito">Já sei a palavra!</a>
-                <input placeholder="Chute" value={chute} onChange={e => setchute(e.target.value)} />
-                <button className={chutar} disabled={desabilitaChute} onClick={Chutar}>Chutar</button>
+                <input placeholder="Chute" data-identifier="type-guess" value={chute}
+                 onChange={e => setchute(e.target.value)} />
+                <button className={chutar} data-identifier="guess-button" disabled={desabilitaChute} onClick={Chutar}>Chutar</button>
             </div>
             <div className="underline">
-                <h1 className={`linhas ${controlaInput}`}>{linhas}</h1>
+                <h1 className={`linhas ${controlaInput}`} data-identifier="word">{linhas}</h1>
             </div>
         </div>
     )
