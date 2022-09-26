@@ -50,7 +50,6 @@ function Teclado(props) {
             }
             if (props.erro === 6) {
                 props.setfase(forca6);
-                alert("perdeu");
                 props.setcontrolaInput("vermelho");
                 props.setdesabilitaButton(false);
                 return props.setlinhas([...props.palavra]);
@@ -67,14 +66,13 @@ function Teclado(props) {
             if (j === props.palavra.length) {
                 props.setdesabilitaButton(false);
                 props.setcontrolaInput("verde");
-                alert("ganhou");
             }
         }
     }
 
     if (props.desabilitaButton === true) {
-        return (<button disabled={habilitaTeclado} data-identifier="letter" className={`letra ${cor}`} onClick=
-            {() => EscolherLetra(props.l)}>{props.l.toUpperCase()}</button>);
+        return (<button disabled={habilitaTeclado} data-identifier="letter" className={`letra ${cor}`} 
+        onClick= {() => EscolherLetra(props.l)}>{props.l.toUpperCase()}</button>);
     }
     else {
         return (<button disabled data-identifier="letter" className={`letra`}>{props.l.toUpperCase()}</button>);
@@ -100,18 +98,18 @@ export default function App() {
         const palavraString = palavraSelecionada.toString();
         const stringSemVirgula = palavraString.replace(/,/g, "").replace(/\./g, "");
         console.log(stringSemVirgula);
+
         if (chute === stringSemVirgula) {
             setlinhas(stringSemVirgula);
             setcontrolaInput("verde");
             setdesabilitaChute(true);
-            return setdesabilitaButton(false);
+            
         }
         else {
             setlinhas(stringSemVirgula);
             setcontrolaInput("vermelho");
             setfase(forca6);
             setdesabilitaChute(true);
-            return setdesabilitaButton(false);
         }
     }
 
@@ -128,6 +126,7 @@ export default function App() {
 
     function EscolherPalavra() {
 
+        
         const escolhida = removerCaracteres(palavras[Math.floor(Math.random() * palavras.length)]);
         setpalavraSelecionada([...escolhida]);
         console.log(escolhida);
@@ -137,12 +136,15 @@ export default function App() {
         }
         arrayDeLinhas = linhas;
         setlinhas(arrayDeLinhas);
-
+        
         const desablita = true;
         setdesabilitaButton(desablita);
         setdesabilitaChute(false);
         setChutar("chutar");
-
+        setfase(forca0);
+        seterro(1);
+        setcontrolaInput("");
+        
     }
 
     return (
