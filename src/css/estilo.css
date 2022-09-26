@@ -33,6 +33,13 @@ img{
     width: 700px;
 }
 
+.vermelho{
+    color: red;
+}
+
+.verde{
+    color:green;
+}
 .letra{
     display: flex;
     margin-left: 10px;
